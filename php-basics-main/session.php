@@ -32,7 +32,7 @@
         
     ?>
 
-    <table style="border:solid 2px">
+    <table>
             <tr>
                 <th>Name</th>
                 <th>Year Founded</th>
