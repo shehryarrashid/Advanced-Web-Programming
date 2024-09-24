@@ -29,10 +29,10 @@
             ["name" => "Monaco", "founded" => 1920, "nation" => false],
             ["name" => "Russia", "founded" => 1276, "nation" => true]
         ];
-        var_dump($countries)
+        
     ?>
 
-    <table>
+    <table style="border:solid 2px">
             <tr>
                 <th>Name</th>
                 <th>Year Founded</th>
@@ -42,7 +42,7 @@
                 foreach($countries as $country){
                     echo "<tr>";
                     echo "<td> {$country['name']} </td>";
-                    echo "<td> {$country['founded']} </td>"
+                    echo "<td> {$country['founded']} </td>";
                     echo "<td> {$country['nation']} </td>";
                     echo "</tr>";
                 }
