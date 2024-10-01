@@ -45,7 +45,6 @@ $conn=NULL;
 <h1>Here's a list of films</h1>
 <?php
 
-
 // The results from the database are returned as an array
 // Use a foreach loop to iterate over the array and display the each film
 foreach ($films as $film) {
