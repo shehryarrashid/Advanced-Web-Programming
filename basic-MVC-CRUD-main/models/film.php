@@ -4,7 +4,7 @@
 function getConnection()
 {
 	try {
-		$conn = new PDO('mysql:host=localhost;dbname=MyDatabase', 'MyUsername', 'MyPassword');
+		$conn = new PDO('mysql:host=localhost;dbname=cht2520', 'cht2520', 'Allahisgreat2002');
 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch (PDOException $exception) {
 		echo "Oh no, there was a problem" . $exception->getMessage();

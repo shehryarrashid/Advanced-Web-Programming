@@ -1,20 +1,8 @@
-<!DOCTYPE HTML>
-<html>
 
-<head>
-    <title>Show the details for a film</title>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-</head>
-
-<body>
-    <nav>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="create.php">Add new film</a></li>
-            <li><a href="about.php">About</a></li>
-        </ul>
-    </nav>
+<?php 
+require('utils/header.php');
+require('utils/nav.php'); 
+?>
     <?php
     // Display the film's details. There is a single film, so we don't need a foreach loop
     echo "<h1>{$film['title']}</h1>";
@@ -36,6 +24,4 @@ The field contains the id number of the film.
         <button type='submit'>Delete</button>
     </form>
 
-</body>
-
-</html>
+<?php require('utils/footer.php'); ?>
