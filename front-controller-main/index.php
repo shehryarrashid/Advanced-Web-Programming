@@ -37,6 +37,4 @@ if ($action === "/") {
 }else if ($action === "delete"){
     // Call destroy() in filmController
     destroy();
-
-
 }
