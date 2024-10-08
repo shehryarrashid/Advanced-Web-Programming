@@ -15,25 +15,83 @@
                 echo "<p>{$student->getFullName()}</p>";
             }
         }
+
+        static function printStudentsAsList($students){
+            echo "<ul>";
+            foreach($students as $student){
+                echo "<li>" . $student->getFullName() . "</li>";
+            }
+            echo "</ul>";
+        }
     }
 
     class Student
     {
-        public $studentNum;
-        public $firstName;
-        public $lastName;
+        private $studentNum;
+        private $firstName;
+        private $lastName;
+
+        function __construct($studentNum,$firstName,$lastName){
+            $this->setStudentNumber($studentNum);
+            $this->setFirstName($firstName);
+            $this->setLastName($lastName);
+        }
+
+        // Setters
+
+        public function setStudentNumber($studentNum){
+            $this->studentNumberCheck($studentNum);
+            $this->studentNum = $studentNum;
+        }
+
+        public function setFirstName($firstName){
+            $this->checkEmptyString($firstName);
+            $this->firstName = $firstName;
+        }
+
+        public function setLastName($lastName){
+            $this->checkEmptyString($lastName);
+            $this->lastName = $lastName;
+        }
+
+        // Getters
 
         public function getFullName()
         {
             return "{$this->firstName} {$this->lastName}";
         }
+
+        // Additional Methods
+
+        private function studentNumberCheck($studentNumber){
+            if(empty($studentNumber) || $studentNumber[0] !== 'u' || strlen($studentNumber) !== 8){
+                throw new InvalidArgumentException ('Student Number Should Have 8 characters and start with the letter u');
+            }
+        }
+
+        private function checkEmptyString($string){
+            if(empty($string)){
+                throw new InvalidArgumentException ('Please insert a non empty argument');
+            }
+        }
+
     }
 
-    $exampleStudent = new Student();
-    $exampleStudent->studentNum = "u0123456";
-    $exampleStudent->firstName = "John";
-    $exampleStudent->lastName = "Smith";
-    var_dump($exampleStudent);
+    // $exampleStudent = new Student();
+    // $exampleStudent->studentNum = "u0123456";
+    // $exampleStudent->firstName = "John";
+    // $exampleStudent->lastName = "Smith";
+    // echo "The full name of the student is: " . $exampleStudent->getFullName() . "<br>";
+    // var_dump($exampleStudent);
+
+    // echo "<br>";
+    // $exampleStudent2 = new Student();
+    // $exampleStudent2->studentNum = "u1234567";
+    // $exampleStudent2->firstName = "John";
+    // $exampleStudent2->lastName = "Doe";
+    // var_dump($exampleStudent2);
+
+    // echo "<br>";
 
     /*
 1) The code above declares a simple Student class. It then creates a Student object and dumps the details of the object. 
@@ -50,8 +108,12 @@ Again, once this works add some additional code to create a second student objec
 */
 
 
-    // $exampleStudent = new Student("u0123456", "John", "Smith");
-    // echo "<p>{$exampleStudent->getFullName()}</p>";
+    $exampleStudent = new Student("u0123456", "John", "Smith");
+    echo "<p>{$exampleStudent->getFullName()}</p>";
+
+
+    $exampleStudent2 = new Student("u1234567","Jane","Doe");
+    echo "<p>{$exampleStudent2->getFullName()}</p>";
 
 
 
@@ -61,10 +123,14 @@ Uncomment the code and add a foreach loop that will output each student's name i
 */
 
 
-    // $students=[];
-    // $students[]= new Student("u0123456", "John", "Smith");
-    // $students[]= new Student("u0123456", "Ruhksar", "Mirza");
-    // $students[]= new Student("u0123456", "Ania", "Kowalski");
+    $students=[];
+    $students[]= new Student("u0123456", "John", "Smith");
+    $students[]= new Student("u0123456", "Ruhksar", "Mirza");
+    $students[]= new Student("u0123456", "Ania", "Kowalski");
+
+    foreach ($students as $student){
+        echo "<p>{$student->getFullName()}</p>";
+    }
 
     /*
 4) The class StudentPrinter has a single method printStudents(). 
@@ -73,6 +139,14 @@ Once this works you can delete the foreach loop you added in (Q3).
 b) Add an additional method to the StudentPrinter class, name it printStudentsAsList(). 
 This method should output the array of students as an HTML list. Check this works by calling the printStudentsAsList() method.
 */
+
+    echo "<br>";
+    echo "<p>Printing Student using a static function</p>";
+    echo StudentPrinter::printStudents($students);
+
+    echo "<br>";
+    echo "<p>Printing Student as an HTML list</p>";
+    echo StudentPrinter::printStudentsAsList($students);
 
     /*
 5) Have a look at the notes for info about access modifiers. Make the properties in the Student class private. 
@@ -86,7 +160,7 @@ The code below can be used to check your getter and setter methods.
 
     //testing getters and setters
 
-    // $student = new Student("u0123456", "John", "Smith"); //should work ok
+    $student = new Student("u0123456", "John", "Smith"); //should work ok
     // $student = new Student("0123456", "John", "Smith"); //should give an error (no u in the student number)
     // $student = new Student("u012345", "John", "Smith"); //should give an error (student number not long enough)
     // $student = new Student("u0123456", "", "Smith"); //should given an error (empty first name)
