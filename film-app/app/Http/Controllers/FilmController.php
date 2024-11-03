@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Film;
 
 class FilmController extends Controller
 {
     function index()
     {
-        $films = Film::all();
-        return view('films.index',['films' => $films]);
+    $films = Film::all();
+    return view('films.index',['films' => $films]);
     }
 
     function create()
@@ -20,7 +21,7 @@ class FilmController extends Controller
 
     function about()
     {
-        return view('films.about');
+        return "About the amazing film app";
     }
 
     function store(Request $request)
