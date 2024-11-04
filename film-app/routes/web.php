@@ -18,3 +18,7 @@ Route::post('/films', [FilmController::class, 'store']);
 Route::get('/films/{id}', [FilmController::class, 'show']);
 
 Route::get('/films/{id}/edit', [FilmController::class, 'edit']);
+
+Route::patch('/films', [FilmController::class, 'update']);
+
+Route::delete('/films', [FilmController::class, 'destroy']);

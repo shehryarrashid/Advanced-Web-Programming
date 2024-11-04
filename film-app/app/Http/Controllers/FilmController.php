@@ -21,7 +21,7 @@ class FilmController extends Controller
 
     function about()
     {
-        return "About the amazing film app";
+        return view('films.about');
     }
 
     function store(Request $request)
@@ -44,5 +44,20 @@ class FilmController extends Controller
     {
         $film = Film::find($id);
         return view('films.edit', ['film' => $film]);
+    }
+
+    function update(Request $request){
+        $film = Film::find($request->id);
+        $film->title = $request->title;
+        $film->year = $request->year;
+        $film->duration = $request->duration;
+        $film->save();
+        return redirect('/films');
+    }
+
+    function destroy(Request $request){
+        $film = Film::find($request->id);
+        $film->delete();
+        return redirect('/films');
     }
 }
