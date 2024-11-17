@@ -3,7 +3,7 @@
     @foreach ($films as $film)
     <p>
         <a href="/films/{{$film->id}}">
-            {{$film->title}}
+            {{$film->title}} ({{$film->certificate->name}})
         </a>
     </p>
     @endforeach

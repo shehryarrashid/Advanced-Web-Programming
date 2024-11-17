@@ -16,6 +16,22 @@
       <input type="text" id="duration" name="duration" />
     </div>
     <div>
+      <fieldset>
+          <legend>Select a certificate for your film:</legend>
+          @foreach ($certificates as $certificate)
+          <label for="{{$certificate->name}}">
+              <input
+                  type="radio"
+                  name="certificate_id"
+                  id="{{$certificate->name}}"
+                  value="{{$certificate->id}}"
+              />
+              {{$certificate->name}}
+          </label>
+          @endforeach
+      </fieldset>
+    </div>
+    <div>
       <button type="submit">Save the Film</button>
     </div>
   </form>

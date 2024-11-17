@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Film;
+use App\Models\Certificate;
+
 
 class FilmController extends Controller
 {
     function index()
     {
-    $films = Film::all();
-    return view('films.index',['films' => $films]);
+        $films = Film::all();
+        return view('films.index',['films' => $films]);
     }
 
     function create()
     {
-        return view('films.create');
+        $certificates = Certificate::all();
+        return view('films.create', ['certificates' => $certificates]);
     }
 
     function about()
@@ -30,6 +33,7 @@ class FilmController extends Controller
         $film->title = $request->title;
         $film->year = $request->year;
         $film->duration = $request->duration;
+        $film->certificate_id = $request->certificate_id;
         $film->save();
         return redirect('/films');
     }
