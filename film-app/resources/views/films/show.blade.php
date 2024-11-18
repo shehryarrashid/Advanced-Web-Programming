@@ -3,14 +3,16 @@
     <p>Year:{{$film->year}}</p>
     <p>Duration:{{$film->duration}}</p>
 
-    <a href='/films/{{$film->id}}/edit'>
+    @can('edit')
+    <a href="/films/{{$film->id}}/edit">
         <button>Edit</button>
     </a>
 
-    <form method='POST' action='/films'>
-        @csrf
+    <form method="POST" action="/films">
+        @csrf 
         @method('DELETE')
-        <input type="hidden" name="id" value="{{$film->id}}">
-        <button type='submit'>Delete</button>
+        <input type="hidden" name="id" value="{{$film->id}}" />
+        <button type="submit">Delete</button>
     </form>
+    @endcan
 </x-layout>
