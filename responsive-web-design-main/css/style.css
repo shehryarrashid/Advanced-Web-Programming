@@ -1,0 +1,124 @@
+/*Basic properties*/
+
+html {
+    margin: 0;
+  }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(8, 47, 73);
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+  div,
+  ul,
+  header,
+  nav {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover{
+    color:red;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  /* CSS rules for the header*/
+.header {
+    background-color: rgb(8, 47, 73);
+    color: white;
+  }
+  .logo{
+    margin: auto 0;
+  }
+  .header-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-opt {
+    border-top: 1px solid white;
+  }
+  .nav-link {
+    color: white;
+    display: block;
+    margin: 0 1rem;
+  }
+  .nav-link:hover {
+    color: red;
+  }
+  .menu-icon {
+    cursor: pointer;
+    padding: 0.2em;
+  }
+
+  /* CSS rules for the page contents*/
+.main-content {
+    padding: 0.25em;
+  }
+  .content-list {
+    padding: 0;
+  }
+  .content-opt {
+    border-bottom: 1px solid rgb(8, 47, 73);
+  }
+  .content-link {
+    display: block;
+  }
+  .poster {
+    display: block;
+    margin: auto;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  @media screen and (min-width: 640px) {
+    .menu-icon {
+      display: none;
+    }
+    .nav-list {
+      display: block;
+    }
+    .nav-opt {
+      display: inline-block;
+      border-top: 0;
+    
+    }
+    .desktop-header-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    .main-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .content-list-holder {
+        width: 50%;
+      }
+      .content-list {
+        margin: 0.25em;
+      }
+      .poster {
+        float: right;
+      }
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    .desktop-header-wrapper,
+    .main-content {
+      width: 1024px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
