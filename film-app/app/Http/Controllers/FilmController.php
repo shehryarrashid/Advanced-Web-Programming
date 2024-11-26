@@ -10,10 +10,24 @@ use App\Models\Certificate;
 
 class FilmController extends Controller
 {
+    // function index()
+    // {
+    //     $films = Film::all();
+    //     return view('films.index',['films' => $films]);
+    // }
+
     function index()
     {
-        $films = Film::all();
-        return view('films.index',['films' => $films]);
+        $films = Film::byDecade(2000)->get();
+        return view('films.index', ['films' => $films]);
+    }
+
+    // JS
+
+    function listByDecade($decade = 2000)
+    {
+        $films = Film::byDecade($decade)->get();
+        return response()->json($films);
     }
 
     function create()

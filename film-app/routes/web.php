@@ -45,3 +45,7 @@ Route::get('/login', [AuthController::class, 'index'])->name("login");
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::post('/logout', [AuthController::class, 'logout']);
+
+// Javascript
+
+Route::get('/json/films/{decade}', [FilmController::class, 'listByDecade']);
